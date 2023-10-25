@@ -20,7 +20,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mail($to, $subject, $message_body, $headers)) {
             echo "Form submitted successfully. You will receive a confirmation email.";
-            echo '<script>setTimeout(function() { window.location.href = "index.html"; }, 5000);</script>'; // Redirect to index.html after 5 seconds
+            echo '<p>Redirecting to homepage in <span id="countdown">5</span> seconds.</p>';
+            echo '<button id="redirectButton" onclick="window.location.href = \'index.html\';">Go to Homepage</button>';
+
+            echo '<script>
+                var countdown = 5;
+                var countdownElement = document.getElementById("countdown");
+                var redirectButton = document.getElementById("redirectButton");
+
+                function updateCountdown() {
+                    countdown--;
+                    countdownElement.innerText = countdown;
+                    if (countdown <= 0) {
+                        window.location.href = "index.html";
+                    }
+                }
+
+                var countdownInterval = setInterval(updateCountdown, 1000);
+            </script>';
         } else {
             echo "Error sending email. Please try again later.";
         }
