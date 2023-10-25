@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  . "Name: $name\n"
                  . "Message: $message\n"  // Changed $contact to $message
                  . "Email: $email\n";
-    $headers = "From: yadavg.com";  // Replace with your actual email address
+    $headers = "From: santosh352y@gmail.com";  // Replace with your actual email address
 
     // Check if the email was sent successfully
     if (mail($to, $subject, $message_body, $headers)) {
