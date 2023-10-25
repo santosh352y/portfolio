@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Invalid email format. Please provide a valid email address.";
     } else {
         // Send confirmation email
-        $to = "santosh352y@gmail.com"; // Replace with your actual email address
+        $to = "santosh352y@gmail.com"; // Updated with your actual email address
         $subject = "Contact Form Submission from Your Website";
         $message_body = "Name: $name\n"
                      . "Email: $email\n"
@@ -20,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mail($to, $subject, $message_body, $headers)) {
             echo "Form submitted successfully. You will receive a confirmation email.";
-            header("Location: index.html"); // Redirect to index.html
-            exit(); // Terminate the script
+            echo '<script>setTimeout(function() { window.location.href = "index.html"; }, 5000);</script>'; // Redirect to index.html after 5 seconds
         } else {
             echo "Error sending email. Please try again later.";
         }
