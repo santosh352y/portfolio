@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mail($to, $subject, $message_body, $headers)) {
             echo "Form submitted successfully. You will receive a confirmation email.";
+            header("Location: index.html"); // Redirect to index.html
+            exit(); // Terminate the script
         } else {
             echo "Error sending email. Please try again later.";
         }
